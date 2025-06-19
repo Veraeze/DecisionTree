@@ -26,7 +26,7 @@ Key Concepts:
 	•	Entropy Formula ⇒ Entropy = ∑(Pᵢ * log₂(Pᵢ)), Where Pᵢ is the probability of class i.
 
 
-Use Case Practiced: Loan Repayment Prediction
+# Use Case Practiced: Loan Repayment Prediction
 
 Below is a step-by-step outline of the practical implementation I completed:
 
@@ -73,3 +73,59 @@ Below is a step-by-step outline of the practical implementation I completed:
 8. Model Evaluation
 	•	Imported and used accuracy_score from sklearn.metrics.
 	•	Final accuracy score achieved: 93.67%
+
+
+
+# Heart Disease Prediction Using Decision Tree
+
+##  Problem Statement
+The goal of this project is to build a classification model using a Decision Tree to predict whether a patient is likely to have heart disease based on medical and diagnostic features.
+
+
+##  Dataset
+- **Source**: Kaggle Heart Disease UCI Dataset(https://www.kaggle.com/datasets/ronitf/heart-disease-uci)
+- **Target variable**: `target`  indicates presence of heart disease:
+  - `0` —> No disease
+  - `1` —> Disease
+- **Total samples**: 1025
+- **Features**: age, sex, cp (chest pain type), trestbps, chol, fbs, restecg, thalach, exang, oldpeak, slope, ca, thal
+
+
+##  Preprocessing
+- No missing values in the dataset
+- Features were used as is (dataset is already numeric and clean)
+- Split into 80% training and 20% test set using `train_test_split`
+
+
+##  Model Summary
+- **Model used**: Decision Tree Classifier
+- **Why Decision Tree?** Easy to interpret and visualize, performs well with structured data
+- Training was fast and interpretable
+
+
+##  Evaluation Results
+- **Accuracy**: 80.5%
+- **Confusion Matrix**:
+  - True Positives (Disease predicted correctly): 138
+  - True Negatives (No disease predicted correctly): 110
+  - False Positives: 49
+  - False Negatives: 11
+
+###  Classification Report
+
+| Class      | Precision | Recall | F1-score |
+|------------|-----------|--------|----------|
+| No Disease | 0.91      | 0.69   | 0.79     |
+| Disease    | 0.74      | 0.93   | 0.82     |
+
+
+##  Post-Model Visualizations
+- **Decision Tree Plot**: Displays the full flow of how the model splits data
+- **Feature Importance Plot**: Top 10 features that influenced predictions the most
+- **Confusion Matrix Heatmap**: Visual view of correct vs incorrect predictions
+
+
+##  Insights
+- The model performs very well in detecting heart disease (recall = 93%), which is important in healthcare scenarios.
+- A few false positives exist, but better to flag at-risk patients than miss dangerous cases.
+- Decision Trees provide strong interpretability, especially helpful in understanding what factors lead to high risk.
