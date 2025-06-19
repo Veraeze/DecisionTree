@@ -129,3 +129,67 @@ The goal of this project is to build a classification model using a Decision Tre
 - The model performs very well in detecting heart disease (recall = 93%), which is important in healthcare scenarios.
 - A few false positives exist, but better to flag at-risk patients than miss dangerous cases.
 - Decision Trees provide strong interpretability, especially helpful in understanding what factors lead to high risk.
+
+
+
+
+#  Iris Flower Classification
+
+##  Problem Statement
+The goal of this project is to classify iris flowers into one of three species based on the measurements of their petals and sepals. A Decision Tree classifier is used to learn the decision boundaries between species.
+
+
+##  Dataset
+- **Source**: `sklearn.datasets.load_iris()`
+- **Target variable**: `species`
+  - `setosa`
+  - `versicolor`
+  - `virginica`
+- **Total samples**: 150
+- **Features**:
+  - `sepal length (cm)`
+  - `sepal width (cm)`
+  - `petal length (cm)`
+  - `petal width (cm)`
+
+
+##  Preprocessing
+- The dataset was already clean and balanced.
+- A new column `species` was created by mapping the target (0, 1, 2) to species names.
+- Class distribution was visualized using `countplot`, all three classes had equal count (50 each).
+- Data was split into train and test sets using `train_test_split` with `random_state=100`.
+
+
+##  Model Summary
+- **Model used**: Decision Tree Classifier
+- **Why Decision Tree?** Intuitive and performs well on structured data
+- **Random State**: Initially 42 (accuracy = 1.0), changed to 100 for a more realistic split
+- **Final Accuracy**: `96.7%`
+
+
+##  Evaluation Results
+- **Accuracy**: 96.7%
+- **Confusion Matrix**:
+  - Class 0 (Setosa): All correctly predicted
+  - Class 1 (Versicolor): 1 misclassified
+  - Class 2 (Virginica): All correctly predicted
+
+###  Classification Report
+
+| Class      | Precision | Recall | F1-score |
+|------------|-----------|--------|----------|
+| Setosa     | 1.00      | 1.00   | 1.00     |
+| Versicolor | 1.00      | 0.83   | 0.91     |
+| Virginica  | 0.93      | 1.00   | 0.96     |
+
+
+##  Post-Model Visualizations
+- **Decision Tree Diagram**: Displays the logical path used to classify each flower
+- **Feature Importance Bar Chart**: Shows which measurements contributed most to predictions
+- **Confusion Matrix Heatmap**: Visualizes correct and incorrect predictions across species
+
+
+##  Insights
+- The Iris dataset is linearly separable, especially for Setosa, which is easy to classify.
+- The model performs excellently even when shuffled with a different random state.
+- Petal length and petal width were the most important features based on the decision tree's learned splits.
