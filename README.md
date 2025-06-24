@@ -199,7 +199,7 @@ The goal of this project is to classify iris flowers into one of three species b
 
 
 
-#  Titanic Survival Prediction (Decision Tree Classifier)
+#  Titanic Survival Prediction 
 
 This project uses a Decision Tree Classifier to predict which passengers survived the Titanic disaster. It walks through the full machine learning workflow, from data cleaning and EDA to building a pipeline and visualizing model outputs.
 
@@ -324,3 +324,127 @@ Key takeaways:
 - Passenger Class impacts survival: 1st class fared better.
 - Fare influences survival, higher fares had more survivors.
 - Decision Tree Visualization gives interpretable rules for survival predictions.
+
+
+
+
+
+
+
+#  Wine Quality Classification (Red Wine Dataset)
+
+This project is a machine learning classification task that predicts the quality of red wine using a Decision Tree Classifier. It includes full data preprocessing, exploratory data analysis (EDA), model training, hyperparameter tuning, and post-model interpretability visualizations.
+
+
+##  Dataset
+
+- **Source**: UCI Machine Learning Repository  
+- **Filename**: `winequality-red.csv`  
+- **Samples**: 1599  
+- **Features**: 11 physicochemical attributes + quality label  
+- **Target**: `quality_label` (0 = poor quality, 1 = good quality)
+
+
+##  Technologies Used
+
+- Python
+- Scikit-learn
+- Pandas, NumPy
+- Matplotlib, Seaborn
+
+
+##  Data Preparation
+
+1. Loaded dataset with `;` as the separator.
+2. Mapped quality scores into a binary classification:
+   - `quality >= 6`: Good Quality (`1`)
+   - `quality < 6`: Poor Quality (`0`)
+3. Separated features (`X`) and target (`y`).
+4. Standardized the features using `StandardScaler`.
+5. Split the data: 80% training / 20% testing
+
+
+##  Exploratory Data Analysis (EDA)
+
+1. **Countplot**:
+   - Compared distribution of poor vs good wine.
+   - Adjusted threshold from 7→6 to handle class imbalance.
+
+2. **Correlation Heatmap**:
+   - Alcohol showed moderate positive correlation with quality.
+   - Volatile acidity had weak negative correlation.
+   - Sulphates and citric acid showed weak positive relationships.
+
+3. **Boxplots**:
+   - Alcohol vs Quality: Good quality wines had higher alcohol content and greater variability.
+   - Volatile Acidity vs Quality: Poor quality wines had higher volatile acidity.
+
+
+##  Model Training
+
+- Algorithm: Decision Tree Classifier  
+- Criterion: Entropy  
+- Initial Parameters:
+  - `max_depth = 3`
+  - `min_samples_leaf = 5`
+  - `random_state = 100`
+
+
+## ️ Hyperparameter Tuning
+
+- Tuned hyperparameters manually:
+  - Improved model accuracy to **0.78**
+  - Found that increasing `max_depth` and controlling `min_samples_leaf` helped generalization.
+
+- Tried class balancing with:
+  - `class_weight = 'balanced'`: Accuracy dropped to **0.75**
+  - SMOTE: Accuracy around **0.77**
+
+
+##  Evaluation Results
+
+- Final Accuracy: `0.7812`
+- Confusion Matrix:
+
+  |               | Predicted Poor | Predicted Good |
+  |---------------|----------------|----------------|
+  | Actual Poor   | 114            | 34             |
+  | Actual Good   | 36             | 136            |
+
+- Classification Report:
+
+  | Class         | Precision | Recall | F1-score | Support |
+  |---------------|-----------|--------|----------|---------|
+  | Poor Quality  | 0.76      | 0.77   | 0.77     | 148     |
+  | Good Quality  | 0.80      | 0.79   | 0.80     | 172     |
+  | **Accuracy**  |           |        | **0.78** | 320     |
+
+
+##  Post-Model Visualizations
+
+1. Confusion Matrix Heatmap: Clear visualization of true/false predictions.
+2. Feature Importance (Good Quality):
+   - Alcohol
+   - Volatile Acidity
+   - Sulphates
+   - Density
+   - pH
+
+3. Feature Importance (Poor Quality):
+   - Highlighted least impactful features for good quality classification.
+
+4. Decision Tree Plot:
+   - Visualized tree structure with decision thresholds, sample counts, and classes.
+
+
+##  Conclusion
+
+- Model performed well after tuning with an accuracy of ~78%.
+- Key features like alcohol and volatile acidity were instrumental in predicting quality.
+- Best result came from tuning without explicit resampling or reweighting.
+
+
+
+
+
+
